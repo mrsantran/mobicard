@@ -1,0 +1,21 @@
+{
+    "name": "santran/mobicard",
+    "description": "Tích hợp thanh toán thẻ cào qua Ngân Lượng cho website Laravel 5.2 tở lên.",
+    "type": "library",
+    "require": {
+        "php": ">=5.5.9"
+    },
+    "autoload": {
+        "psr-4": {
+            "SanTran\\MobiCard\\": "src/"
+        }
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "San Tran",
+            "email": "santran686@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev"
+}

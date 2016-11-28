@@ -38,6 +38,8 @@ Open your Controller.
 Add this line on above file, remember after 'namespace ...' keywork:
 ```php
 use MobiCard;
+```
+on function
 ```php
         $serial = $request->get('serial', "");
         $pin = $request->get('pin', "");

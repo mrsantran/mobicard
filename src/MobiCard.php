@@ -6,14 +6,14 @@ use SanTran\MobiCard\Config;
 
 class MobiCard
 {
-    function CardPay($pin_card, $card_serial, $type_card, $_order_id, $client_fullname, $client_mobile, $client_email)
+    public static function CardPay($pin_card, $card_serial, $type_card, $_order_id, $client_fullname, $client_mobile, $client_email)
     {
         $params = array(
             'func' => Config::$_FUNCTION,
             'version' => Config::$_VERSION,
             'merchant_id' => config('mobicard.MERCHANT_ID'),
             'merchant_account' => config('mobicard.EMAIL_RECEIVE_MONEY'),
-            'merchant_password' => MD5(config('mobicard.MERCHANT_ID') . '|' . config('mobicard.MERCHANT_PASSWORD')),
+            'merchant_password' => md5(config('mobicard.MERCHANT_ID') . '|' . config('mobicard.MERCHANT_PASSWORD')),
             'pin_card' => $pin_card,
             'card_serial' => $card_serial,
             'type_card' => $type_card,
@@ -66,7 +66,7 @@ class MobiCard
                 if ($kq->error_code == '00') {
                     $kq->error_message = "Nạp thẻ thành công, mệnh giá thẻ = " . $kq->card_amount;
                 } else {
-                    $kq->error_message = $this->GetErrorMessage($kq->error_code);
+                    $kq->error_message = self::GetErrorMessage($kq->error_code);
                 }
             }
         } else {
@@ -76,7 +76,7 @@ class MobiCard
         return $kq;
     }
 
-    function GetErrorMessage($error_code)
+    public static function GetErrorMessage($error_code)
     {
         $arrCode = array(
             '00' => 'Giao dịch thành công',
@@ -102,24 +102,6 @@ class MobiCard
             '19' => 'Kết nối từ NgânLượng.vn tới hệ thống Telco bị lỗi, thẻ chưa bị trừ (thường do lỗi kết nối giữa NgânLượng.vn với Telco, ví dụ sai tham số kết nối, mà không liên quan đến merchant)',
             '20' => 'Kết nối tới telco thành công, thẻ bị trừ nhưng chưa cộng tiền trên NgânLượng.vn');
 
-        return $arrCode[$error_code];
-    }
-
-    function GetErrorMessageV2($error_code)
-    {
-        $arrCode = array(
-            '00' => 'Thành công',
-            '01' => 'Lỗi chưa xác minh',
-            '05' => 'Mã thẻ nạp không đúng hoặc đã được sử dụng',
-            '06' => 'Lỗi kết nối với hệ thống xác thực thẻ',
-            '07' => 'Tài khoản nhận tiền nạp không tồn tại',
-            '08' => 'Tài khoản truy cập hệ thống nạp thẻ tạm thời bị khóa',
-            '09' => 'Khách hàng đang nạp thẻ bị khóa (do nhập sai mã thẻ liên tiếp)',
-            '10' => 'Không nạp được tiền vào tài khoản NgânLượng.vn',
-            '11' => 'Hệ thống NgânLượng.vn không sinh được phiếu thu',
-            '12' => 'Phiếu thu tại NgânLượng.vn không cập nhật được trạng thái Đã thu tiền',
-            '13' => 'Không chuyển tiền được vào tài khoản NgânLượng.vn của người nhận',
-        );
         return $arrCode[$error_code];
     }
 

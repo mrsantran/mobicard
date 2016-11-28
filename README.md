@@ -2,7 +2,7 @@
 Tích hợp thanh toán thẻ cào qua Ngân Lượng cho website Laravel 5.2 tở lên.
 ======================
 
-[![Total Downloads](https://img.shields.io/packagist/dt/santran/smartlogs.svg)](https://packagist.org/packages/santran/mobicard)
+[![Total Downloads](https://img.shields.io/packagist/dt/santran/mobicard.svg)](https://packagist.org/packages/santran/mobicard)
 
 -----
 **Install with composer**. 
@@ -59,7 +59,7 @@ use MobiCard;
         } else {
             echo '<script>alert("Lỗi :' . $rs->error_message . '");</script>';
         }
-
+```
 on your views.
 ```html
 <table align="center">
@@ -111,7 +111,7 @@ on your views.
                                         </td>
                                     </tr>	
                                 </table>
-                                
+``` 
                                 
 Any Q/A, Please contact to me.
 Skype: santd86

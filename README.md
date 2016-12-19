@@ -3,6 +3,7 @@ Tích hợp thanh toán thẻ cào qua Ngân Lượng cho website Laravel 5.2 t�
 ======================
 
 [![Total Downloads](https://img.shields.io/packagist/dt/santran/mobicard.svg)](https://packagist.org/packages/santran/mobicard)
+[![Paypal Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)](http://paypal.me/MrSanTran)
 
 -----
 **Install with composer**. 
